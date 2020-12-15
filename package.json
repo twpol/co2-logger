@@ -1,0 +1,12 @@
+{
+  "name": "co2-logger",
+  "version": "1.0.0",
+  "description": "Command-line tool for logging CO2 data from supported sensors",
+  "main": "index.js",
+  "repository": "https://github.com/twpol/co2-logger.git",
+  "author": "James Ross <git@james-ross.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "co2-monitor": "^2.0.1"
+  }
+}
