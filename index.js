@@ -6,6 +6,8 @@ const config = require("./config.json");
 const mqtt = require("mqtt");
 const mqttClient = mqtt.connect(config.mqtt.url, config.mqtt);
 const mqttTopic = `${config.homeAssistant.topic}/sensor/${config.homeAssistant.deviceName}`;
+const haName =
+  config.homeAssistant.friendlyName || config.homeAssistant.deviceName;
 let mqttConnected = false;
 
 mqttClient.on("connect", () => {
@@ -13,7 +15,7 @@ mqttClient.on("connect", () => {
   mqttClient.publish(
     `${mqttTopic}/${config.homeAssistant.deviceName}-CO2/config`,
     JSON.stringify({
-      name: `${config.homeAssistant.deviceName}-CO2`,
+      name: `${haName}-CO2`,
       device_class: "carbon_dioxide",
       unit_of_measurement: "ppm",
       state_class: "measurement",
@@ -22,14 +24,14 @@ mqttClient.on("connect", () => {
       unique_id: `${config.homeAssistant.deviceName}-CO2`,
       device: {
         identifiers: [config.homeAssistant.deviceName],
-        name: config.homeAssistant.deviceName,
+        name: haName,
       },
     })
   );
   mqttClient.publish(
     `${mqttTopic}/${config.homeAssistant.deviceName}-T/config`,
     JSON.stringify({
-      name: `${config.homeAssistant.deviceName}-T`,
+      name: `${haName}-T`,
       device_class: "temperature",
       unit_of_measurement: "°C",
       state_class: "measurement",
@@ -38,7 +40,7 @@ mqttClient.on("connect", () => {
       unique_id: `${config.homeAssistant.deviceName}-T`,
       device: {
         identifiers: [config.homeAssistant.deviceName],
-        name: config.homeAssistant.deviceName,
+        name: haName,
       },
     })
   );
