@@ -7,6 +7,7 @@
   "author": "James Ross <git@james-ross.co.uk>",
   "license": "MIT",
   "dependencies": {
-    "co2-monitor": "^2.0.1"
+    "co2-monitor": "^2.1.0",
+    "mqtt": "^4.3.7"
   }
 }
