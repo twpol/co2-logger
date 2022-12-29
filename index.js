@@ -26,7 +26,10 @@ mqttClient.on("connect", () => {
         identifiers: [config.homeAssistant.deviceName],
         name: haName,
       },
-    })
+    }),
+    {
+      retain: true,
+    }
   );
   mqttClient.publish(
     `${mqttTopic}/${config.homeAssistant.deviceName}-T/config`,
@@ -42,7 +45,10 @@ mqttClient.on("connect", () => {
         identifiers: [config.homeAssistant.deviceName],
         name: haName,
       },
-    })
+    }),
+    {
+      retain: true,
+    }
   );
   mqttConnected = true;
 });
